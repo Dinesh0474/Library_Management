@@ -96,7 +96,7 @@ const Dashboard = (props) => {
                                     <p className="card-text">Author: {book.author}</p>
                                     <p className="card-text">Subject: {book.subject}</p>
                                     <p className="card-text">Publish: {book.publish}</p>
-                                    <p className="card-text">Stock: {book.stock}</p>
+                                    <p className="card-text">Stock: {book.stocks}</p>
                                 </div>
                                 <button onClick={() => handleClick(book.book_id)}>Borrow</button>
                             </div>
