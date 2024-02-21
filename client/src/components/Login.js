@@ -1,8 +1,11 @@
 import React, { Fragment, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useEmail } from '../App'; // Import the custom hook
 
-const Login = ({ setAuth, handleSetAgent_id }) => {
+const Login = () => {
+  const { handleEmail } = useEmail(); // Accessing handleEmail function from context
+  
   const [inputs, setInputs] = useState({
     user_email: '',
     user_password: '',
@@ -16,7 +19,9 @@ const Login = ({ setAuth, handleSetAgent_id }) => {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
+    handleEmail(user_email); // Setting email using context
     navigate("/dashboard");
+  
     try {
       const body = { user_email, user_password };
       const response = await fetch('http://localhost:5000/user/login', {

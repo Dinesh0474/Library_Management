@@ -1,11 +1,11 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
     const [books, setBooks] = useState([]);
     const [filterText, setFilterText] = useState('');
     const [searchResultFound, setSearchResultFound] = useState(false);
-    const [displayCount, setDisplayCount] = useState(5); // State to track number of books to display
+    const [displayCount, setDisplayCount] = useState(5); 
     const navigate = useNavigate();
 
     const getBooks = async () => {
@@ -51,6 +51,24 @@ const Dashboard = () => {
         setDisplayCount(displayCount + 5); // Increase display count by 5
     };
 
+    const handleClick = async (book_id) => {
+       props.setbookid(book_id)
+       navigate("/borrow")
+        try {
+            // Send a request to your backend to handle the borrowing process
+            const response = await fetch(`http://localhost:5000/user/borrow/${book_id}`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body: JSON.stringify()
+            });
+          
+            getBooks();
+        } catch (error) {
+            console.error("Error borrowing book:", error.message);
+        }
+    };
     return (
         <Fragment>
             <h1 className="text-center">Books List</h1>
@@ -78,7 +96,9 @@ const Dashboard = () => {
                                     <p className="card-text">Author: {book.author}</p>
                                     <p className="card-text">Subject: {book.subject}</p>
                                     <p className="card-text">Publish: {book.publish}</p>
+                                    <p className="card-text">Stock: {book.stock}</p>
                                 </div>
+                                <button onClick={() => handleClick(book.book_id)}>Borrow</button>
                             </div>
                         </div>
                     ))}

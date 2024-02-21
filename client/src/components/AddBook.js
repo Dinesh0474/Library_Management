@@ -8,6 +8,7 @@ const AddBook = () => {
   const [author, setAuthor] = useState('');
   const [publish,setPublish] = useState('');
   const [subject,setSubject] = useState('');
+  const [stock,setStock] = useState('');
   
   const navigate = useNavigate();
 
@@ -21,7 +22,8 @@ const AddBook = () => {
       title:title,
       author:author,
       publish:publish,
-      subject:subject
+      subject:subject,
+      stocks:stock
 
     };
 
@@ -40,6 +42,7 @@ const AddBook = () => {
         setPublish('')
         setSubject('')
         setTitle('')
+        setStock('')
         navigate("/admindashboard");
       } else {
         console.error('Failed to submit the form.');
@@ -73,6 +76,10 @@ const AddBook = () => {
             <div className="mb-3">
               <label className="form-label">Subject</label>
               <input type="text" className="form-control" name="subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Stock</label>
+              <input type="text" className="form-control" name="subject" value={stock} onChange={(e) => setStock(e.target.value)} />
             </div>
             <div className="d-grid">
               <button type="submit" className="btn btn-primary">Submit</button>

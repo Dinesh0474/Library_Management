@@ -1,5 +1,6 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useEmail } from "../App";
 
 const AdminDashboard = () => {
     const [books, setBooks] = useState([]);
@@ -7,6 +8,12 @@ const AdminDashboard = () => {
     const [searchResultFound, setSearchResultFound] = useState(false);
     const [displayCount, setDisplayCount] = useState(5); 
     const navigate = useNavigate();
+
+  
+
+   
+
+
 
     const getBooks = async () => {
         try {
@@ -28,8 +35,12 @@ const AdminDashboard = () => {
         }
     };
     
+  
+
+
     useEffect(() => {
         getBooks();
+      
     }, []);
 
     const logout = () => {
@@ -50,6 +61,10 @@ const AdminDashboard = () => {
     const handleShowMore = () => {
         setDisplayCount(displayCount + 5); // Increase display count by 5
     };
+
+    const handleBorrow = () => {
+        navigate("/borrowdetails")
+    }
 
     return (
         <Fragment>
@@ -78,6 +93,7 @@ const AdminDashboard = () => {
                                     <p className="card-text">Author: {book.author}</p>
                                     <p className="card-text">Subject: {book.subject}</p>
                                     <p className="card-text">Publish: {book.publish}</p>
+                                    <p className="card-text">Stock: {book.stocks}</p>
                                 </div>
                             </div>
                         </div>
@@ -97,6 +113,10 @@ const AdminDashboard = () => {
             <Link to="/addbook"  style={{ textDecoration: 'none' }}>
                 Add Book
             </Link>
+            </button>
+
+            <button  className="btn btn-danger d-block mx-auto mb-4" onClick={handleBorrow}>
+                Borrow Details
             </button>
             
             

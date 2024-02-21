@@ -14,6 +14,24 @@ CREATE TABLE books(
     title VARCHAR(255) NOT NULL,
     author VARCHAR(20) NOT NULL,
     subject VARCHAR(255),
-    publish VARCHAR(255)
+    publish VARCHAR(255),
+    stocks INT
 );
+
+
+CREATE TABLE booksborrow(
+    borrow_id Serial primary key,
+    book_id INT,
+    user_name VARCHAR(255),
+    user_id INT,
+    user_phone_no VARCHAR(20),
+    borrow_date TIMESTAMP DEFAULT CURRENT TIMESTAMP,
+    return_date TIMESTAMP
+
+)
+
+
+
+
+
 

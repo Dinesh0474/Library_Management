@@ -5,8 +5,8 @@ const pool = require("../db")
 
 router.post("/create",async (req,res) => {
     try {
-        const {title,author,subject,publish} = req.body;
-        const newbook = await pool.query("INSERT INTO books(title,author,subject,publish) VALUES ($1,$2,$3,$4)",[title,author,subject,publish]);
+        const {title,author,subject,publish,stocks} = req.body;
+        const newbook = await pool.query("INSERT INTO books(title,author,subject,publish,stocks) VALUES ($1,$2,$3,$4,$5)",[title,author,subject,publish,stocks]);
         res.status(200).json({message:"book created"})
         
     } catch (error) {
@@ -26,6 +26,9 @@ router.get("/display", async (req, res) => {
         res.status(500).json({ message: "Failed to fetch books" });
     }
 });
+
+
+
 
 
 module.exports = router;
