@@ -24,7 +24,7 @@ const Login = () => {
   
     try {
       const body = { user_email, user_password };
-      const response = await fetch('http://localhost:5000/user/login', {
+      const response = await fetch('http://3.94.103.64:5000/user/login', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',

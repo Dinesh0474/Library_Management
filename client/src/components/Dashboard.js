@@ -10,7 +10,7 @@ const Dashboard = (props) => {
 
     const getBooks = async () => {
         try {
-            const response = await fetch("http://localhost:5000/books/display", {
+            const response = await fetch("http://3.94.103.64:5000/books/display", {
                 method: "GET",
                 headers: {
                     'Content-Type': "application/json"
@@ -56,7 +56,7 @@ const Dashboard = (props) => {
        navigate("/borrow")
         try {
             // Send a request to your backend to handle the borrowing process
-            const response = await fetch(`http://localhost:5000/user/borrow/${book_id}`, {
+            const response = await fetch(`http://3.94.103.64:5000/user/borrow/${book_id}`, {
                 method: "POST",
                 headers: {
                     'Content-Type': "application/json"

@@ -23,7 +23,7 @@ const BorrowBook = (props) => {
         };
 
         try {
-            const response = await fetch(`http://localhost:5000/admin/userdetails/${user_email}`, {
+            const response = await fetch(`http://3.94.103.64:5000/admin/userdetails/${user_email}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

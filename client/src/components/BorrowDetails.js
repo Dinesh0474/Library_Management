@@ -10,7 +10,7 @@ const BorrowDetails = () => {
   const getUserDetails = async () => {
     try {
 
-        const response = await fetch("http://localhost:5000/admin/borrowdetails",{
+        const response = await fetch("http://3.94.103.64:5000/admin/borrowdetails",{
             method: "GET",
             headers:{
                 'Content-Type':"application/json"

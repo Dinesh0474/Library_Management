@@ -17,7 +17,7 @@ const AdminDashboard = () => {
 
     const getBooks = async () => {
         try {
-            const response = await fetch("http://localhost:5000/books/display", {
+            const response = await fetch("http://3.94.103.64:5000/books/display", {
                 method: "GET",
                 headers: {
                     'Content-Type': "application/json"
